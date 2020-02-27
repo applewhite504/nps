@@ -7,9 +7,11 @@
 </head>
 <body>
     <form>
-        <label for="text"> Add something into the input box</label> <br><br>
+        <label for="text"> To find National Park info, enter a state code here:</label> <br><br>
         <input type="text" id="submitNational" placeholder="State Abbreviation" required/>
-        <input type="submit" id="park-button" value="Get api data">
+        <label for ="max-results">Maximum returned results</label>
+        <input type ="number" name ="max-results" id="js-max-results" value="10">
+        <input type="submit" id="park-button" value="Get info">
     </form>
     
     <section class="displayNational">
