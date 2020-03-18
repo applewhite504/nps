@@ -12,7 +12,7 @@ function apiData(parkLocation){
     const paramsNational = {
         api_key: apiKey,
         stateCode: parkLocation,
-        maxResults: 3,
+        limit: 10,
     }
     let queryString = formatParams(paramsNational);
     let newNationalUrl = nationalUrl + '?' + queryString;
