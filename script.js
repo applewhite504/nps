@@ -1,5 +1,5 @@
 'use strict';
-let nationalUrl = 'https://developer.nps.gov/api/v1/campgrounds';
+let nationalUrl = 'https://developer.nps.gov/api/v1/parks';
 let apiKey = 'rrspjQLxbINfED0AOxwHxMTwmbxi1IsWeqltUV1I';
 // This function formats the parameters for the api call
 function formatParams(params) {
@@ -8,10 +8,10 @@ function formatParams(params) {
         return queryItems.join('&');
 }
 // API Fetch for national parks
-function apiData(campgroundLocation){
+function apiData(parkLocation){
     const paramsNational = {
         api_key: apiKey,
-        stateCode: campgroundLocation,
+        stateCode: parkLocation,
         maxResults: 3,
     }
     let queryString = formatParams(paramsNational);
@@ -45,8 +45,8 @@ function formHandle (){
     $('#park-button').click(event => {
         event.preventDefault();
         //const numParks = getNumParks()
-        let campgroundLocation = $('#submitNational').val();
-        apiData(campgroundLocation);
+        let parkLocation = $('#submitNational').val();
+        apiData(parkLocation);
         $('.displayNational').empty();
         $('.displayError').empty();
     });
