@@ -8,11 +8,11 @@ function formatParams(params) {
         return queryItems.join('&');
 }
 // API Fetch for national parks
-function apiData(parkLocation){
+function apiData(parkLocation, maxResults){
     const paramsNational = {
         api_key: apiKey,
         stateCode: parkLocation,
-        limit: 10,
+        limit: maxResults,
     }
     let queryString = formatParams(paramsNational);
     let newNationalUrl = nationalUrl + '?' + queryString;
@@ -32,9 +32,9 @@ function displayApiData(responseJson){
      console.log(responseJson.data[i]);
      $('.displayNational').append(`
         <h2>${responseJson.data[i].name}</h2>
-        <h4>${responseJson.data[i].weatheroverview}</h4>
+        
         <p>${responseJson.data[i].description}</p>
-        <p>${responseJson.data[i].directionsoverview}</p>
+        
         <img src="${responseJson.data[i].images[0].url}" width=300>
         <hr>
      `)
@@ -46,7 +46,8 @@ function formHandle (){
         event.preventDefault();
         //const numParks = getNumParks()
         let parkLocation = $('#submitNational').val();
-        apiData(parkLocation);
+        let maxResults = $('#js-max-results').val();
+        apiData(parkLocation, maxResults);
         $('.displayNational').empty();
         $('.displayError').empty();
     });
